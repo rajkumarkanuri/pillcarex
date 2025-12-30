@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>PillCareX – Smart Medicine Management</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ===== RESET ===== */
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+font-family:'Inter',sans-serif;
+background:#050813;
+color:#e2e8f0;
+overflow-x:hidden;
+}
+
+/* ===== VARIABLES ===== */
+:root{
+--green:#00ff88;
+--green2:#39ff14;
+--dark:#050813;
+--card:rgba(15,23,42,.7);
+--gray:#94a3b8;
+}
+
+/* ===== BACKGROUND ===== */
+.grid-bg{
+position:fixed;
+inset:0;
+background:
+linear-gradient(rgba(0,255,136,.03) 1px,transparent 1px),
+linear-gradient(90deg,rgba(0,255,136,.03) 1px,transparent 1px);
+background-size:50px 50px;
+pointer-events:none;
+z-index:0;
+}
+
+/* ===== LAYOUT ===== */
+.container{
+max-width:1200px;
+margin:auto;
+padding:0 20px;
+position:relative;
+z-index:1;
+}
+section{padding:100px 0}
+
+/* ===== HEADER ===== */
+header{
+position:fixed;
+top:0;width:100%;
+background:rgba(5,8,19,.85);
+backdrop-filter:blur(20px);
+border-bottom:1px solid rgba(0,255,136,.2);
+z-index:1000;
+}
+.header-inner{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:16px 0;
+}
+.logo img{height:42px}
+.header-btn{
+background:linear-gradient(135deg,var(--green),var(--green2));
+border:none;
+padding:12px 28px;
+border-radius:40px;
+font-weight:700;
+cursor:pointer;
+}
+
+/* ===== HERO ===== */
+.hero{
+min-height:100vh;
+display:flex;
+align-items:center;
+padding-top:120px;
+}
+.hero-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:60px;
+align-items:center;
+}
+.hero h1{
+font-family:'Orbitron';
+font-size:56px;
+background:linear-gradient(135deg,#fff,var(--green));
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+.hero p{
+margin:25px 0;
+font-size:18px;
+color:var(--gray);
+}
+.hero button{
+background:linear-gradient(135deg,var(--green),var(--green2));
+border:none;
+padding:16px 36px;
+border-radius:50px;
+font-weight:700;
+cursor:pointer;
+}
+
+/* ===== CARDS ===== */
+.card{
+background:var(--card);
+border:1px solid rgba(0,255,136,.2);
+border-radius:22px;
+padding:30px;
+transition:.3s;
+}
+.card:hover{
+transform:translateY(-8px);
+border-color:var(--green);
+box-shadow:0 20px 50px rgba(0,255,136,.2);
+}
+
+/* ===== GRID ===== */
+.grid{
+display:grid;
+gap:30px;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+}
+
+/* ===== WAITLIST ===== */
+.waitlist-box{
+max-width:500px;
+margin:auto;
+background:var(--card);
+padding:50px;
+border-radius:30px;
+border:1px solid rgba(0,255,136,.3);
+}
+.waitlist-box input{
+width:100%;
+padding:16px;
+margin-bottom:18px;
+border-radius:14px;
+border:2px solid rgba(0,255,136,.3);
+background:#0f172a;
+color:#fff;
+}
+.waitlist-box button{
+width:100%;
+padding:18px;
+border:none;
+border-radius:16px;
+font-weight:700;
+background:linear-gradient(135deg,var(--green),var(--green2));
+cursor:pointer;
+}
+
+/* ===== FOOTER ===== */
+footer{
+border-top:1px solid rgba(0,255,136,.2);
+padding:60px 0 30px;
+text-align:center;
+color:var(--gray);
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+.hero-grid{grid-template-columns:1fr}
+.hero h1{font-size:42px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="grid-bg"></div>
+
+<header>
+<div class="container header-inner">
+<div class="logo"><img src="Full_logo.png" alt="PillCareX"></div>
+<button class="header-btn" onclick="scrollToWaitlist()">Join Waitlist</button>
+</div>
+</header>
+
+<section class="hero">
+<div class="container hero-grid">
+<div>
+<h1>Never Miss Your Medicines</h1>
+<p>Smart medicine reminders today. IoT-powered healthcare tomorrow.</p>
+<button onclick="scrollToWaitlist()">Get Early Access</button>
+</div>
+<div class="card">
+<h3>📱 App → 🔗 IoT Roadmap</h3>
+<p>MVP App → Smart Tracking → IoT Pill Dispenser → Health Ecosystem</p>
+</div>
+</div>
+</section>
+
+<section>
+<div class="container">
+<h2 style="text-align:center;margin-bottom:50px">Why PillCareX?</h2>
+<div class="grid">
+<div class="card">⏰ Forgetting doses</div>
+<div class="card">📅 Complex schedules</div>
+<div class="card">👴 Elder care problems</div>
+<div class="card">❌ Missed medicines</div>
+</div>
+</div>
+</section>
+
+<section>
+<div class="container">
+<h2 style="text-align:center;margin-bottom:50px">Future IoT Vision</h2>
+<div class="grid">
+<div class="card">📦 Smart Pill Box</div>
+<div class="card">📡 Auto Detection</div>
+<div class="card">📲 Caregiver Alerts</div>
+</div>
+</div>
+</section>
+
+<section id="waitlist">
+<div class="container">
+<h2 style="text-align:center;margin-bottom:40px">Join the Waitlist</h2>
+<div class="waitlist-box">
+<form onsubmit="submitForm(event)">
+<input required placeholder="Your Name"/>
+<input required type="email" placeholder="Email Address"/>
+<button>Join Now</button>
+<p style="text-align:center;margin-top:16px;color:var(--gray)">No spam. Only updates.</p>
+</form>
+</div>
+</div>
+</section>
+
+<footer>
+<p>© 2025 PillCareX. Built with care.</p>
+</footer>
+
+<script>
+function scrollToWaitlist(){
+document.getElementById('waitlist').scrollIntoView({behavior:'smooth'});
+}
+function submitForm(e){
+e.preventDefault();
+alert("You're on the waitlist 🚀");
+}
+</script>
+
+</body>
+</html>
