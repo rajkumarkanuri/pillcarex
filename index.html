@@ -1,253 +1,342 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>PillCareX – Smart Medicine Management</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PillCareX – Smart Medication Management</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta name="description" content="PillCareX is a smart IoT device and mobile app that simplifies medication routines using reminders, automated dispensing, and family notifications." />
 
-<style>
-/* ===== RESET ===== */
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-font-family:'Inter',sans-serif;
-background:#050813;
-color:#e2e8f0;
-overflow-x:hidden;
-}
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-/* ===== VARIABLES ===== */
-:root{
---green:#00ff88;
---green2:#39ff14;
---dark:#050813;
---card:rgba(15,23,42,.7);
---gray:#94a3b8;
-}
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-/* ===== BACKGROUND ===== */
-.grid-bg{
-position:fixed;
-inset:0;
-background:
-linear-gradient(rgba(0,255,136,.03) 1px,transparent 1px),
-linear-gradient(90deg,rgba(0,255,136,.03) 1px,transparent 1px);
-background-size:50px 50px;
-pointer-events:none;
-z-index:0;
-}
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0b1220;
+      color: #e5e7eb;
+      line-height: 1.6;
+    }
 
-/* ===== LAYOUT ===== */
-.container{
-max-width:1200px;
-margin:auto;
-padding:0 20px;
-position:relative;
-z-index:1;
-}
-section{padding:100px 0}
+    h1, h2, h3 {
+      color: #ffffff;
+      font-weight: 700;
+    }
 
-/* ===== HEADER ===== */
-header{
-position:fixed;
-top:0;width:100%;
-background:rgba(5,8,19,.85);
-backdrop-filter:blur(20px);
-border-bottom:1px solid rgba(0,255,136,.2);
-z-index:1000;
-}
-.header-inner{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:16px 0;
-}
-.logo img{height:42px}
-.header-btn{
-background:linear-gradient(135deg,var(--green),var(--green2));
-border:none;
-padding:12px 28px;
-border-radius:40px;
-font-weight:700;
-cursor:pointer;
-}
+    p {
+      color: #cbd5e1;
+    }
 
-/* ===== HERO ===== */
-.hero{
-min-height:100vh;
-display:flex;
-align-items:center;
-padding-top:120px;
-}
-.hero-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:60px;
-align-items:center;
-}
-.hero h1{
-font-family:'Orbitron';
-font-size:56px;
-background:linear-gradient(135deg,#fff,var(--green));
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-}
-.hero p{
-margin:25px 0;
-font-size:18px;
-color:var(--gray);
-}
-.hero button{
-background:linear-gradient(135deg,var(--green),var(--green2));
-border:none;
-padding:16px 36px;
-border-radius:50px;
-font-weight:700;
-cursor:pointer;
-}
+    section {
+      padding: 100px 0;
+    }
 
-/* ===== CARDS ===== */
-.card{
-background:var(--card);
-border:1px solid rgba(0,255,136,.2);
-border-radius:22px;
-padding:30px;
-transition:.3s;
-}
-.card:hover{
-transform:translateY(-8px);
-border-color:var(--green);
-box-shadow:0 20px 50px rgba(0,255,136,.2);
-}
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
 
-/* ===== GRID ===== */
-.grid{
-display:grid;
-gap:30px;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-}
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(180deg, #0b1220, #020617);
+    }
 
-/* ===== WAITLIST ===== */
-.waitlist-box{
-max-width:500px;
-margin:auto;
-background:var(--card);
-padding:50px;
-border-radius:30px;
-border:1px solid rgba(0,255,136,.3);
-}
-.waitlist-box input{
-width:100%;
-padding:16px;
-margin-bottom:18px;
-border-radius:14px;
-border:2px solid rgba(0,255,136,.3);
-background:#0f172a;
-color:#fff;
-}
-.waitlist-box button{
-width:100%;
-padding:18px;
-border:none;
-border-radius:16px;
-font-weight:700;
-background:linear-gradient(135deg,var(--green),var(--green2));
-cursor:pointer;
-}
+    .hero-content {
+      max-width: 720px;
+    }
 
-/* ===== FOOTER ===== */
-footer{
-border-top:1px solid rgba(0,255,136,.2);
-padding:60px 0 30px;
-text-align:center;
-color:var(--gray);
-}
+    .hero h1 {
+      font-size: 48px;
+      margin-bottom: 24px;
+    }
 
-/* ===== RESPONSIVE ===== */
-@media(max-width:900px){
-.hero-grid{grid-template-columns:1fr}
-.hero h1{font-size:42px}
-}
-</style>
+    .hero p {
+      font-size: 18px;
+      margin-bottom: 16px;
+    }
+
+    /* TWO COLUMN */
+    .two-column {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    ul {
+      margin-top: 20px;
+      padding-left: 20px;
+    }
+
+    ul li {
+      margin-bottom: 12px;
+      color: #cbd5e1;
+    }
+
+    /* FEATURES */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .feature-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 30px;
+    }
+
+    .feature-card h3 {
+      margin-bottom: 12px;
+      font-size: 20px;
+    }
+
+    /* FUTURE */
+    .future {
+      background: #020617;
+    }
+
+    .future ul {
+      max-width: 800px;
+      margin: 30px auto 0;
+    }
+
+    /* WAITLIST */
+    .waitlist {
+      background: linear-gradient(180deg, #020617, #0b1220);
+    }
+
+    .waitlist-box {
+      max-width: 500px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 18px;
+      padding: 40px;
+      text-align: center;
+    }
+
+    .waitlist-box input {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 16px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: #020617;
+      color: #ffffff;
+      font-size: 15px;
+    }
+
+    .waitlist-box button {
+      width: 100%;
+      padding: 14px;
+      border-radius: 10px;
+      border: none;
+      font-weight: 600;
+      font-size: 15px;
+      background: #22c55e;
+      color: #020617;
+      cursor: pointer;
+    }
+
+    .waitlist-note {
+      margin-top: 14px;
+      font-size: 14px;
+      color: #94a3b8;
+    }
+
+    .success-message {
+      display: none;
+      margin-top: 20px;
+      color: #22c55e;
+      font-weight: 600;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 40px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+      color: #94a3b8;
+      font-size: 14px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .two-column {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 36px;
+      }
+    }
+  </style>
 </head>
-
 <body>
 
-<div class="grid-bg"></div>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Never miss a dose again</h1>
+        <p>
+          PillCareX is a smart IoT device and mobile app that simplifies
+          medication routines through automated dispensing, intelligent reminders,
+          and real-time family notifications.
+        </p>
+        <p>
+          Designed to reduce missed doses, eliminate confusion, and provide
+          peace of mind for users and caregivers.
+        </p>
+      </div>
+    </div>
+  </section>
 
-<header>
-<div class="container header-inner">
-<div class="logo"><img src="Full_logo.png" alt="PillCareX"></div>
-<button class="header-btn" onclick="scrollToWaitlist()">Join Waitlist</button>
-</div>
-</header>
+  <!-- APP SECTION -->
+  <section>
+    <div class="container two-column">
+      <div>
+        <h2>The PillCareX Mobile App</h2>
+        <p>
+          The PillCareX app acts as the control center for managing medications,
+          offering a clean and intuitive experience for users of all ages.
+        </p>
 
-<section class="hero">
-<div class="container hero-grid">
-<div>
-<h1>Never Miss Your Medicines</h1>
-<p>Smart medicine reminders today. IoT-powered healthcare tomorrow.</p>
-<button onclick="scrollToWaitlist()">Get Early Access</button>
-</div>
-<div class="card">
-<h3>📱 App → 🔗 IoT Roadmap</h3>
-<p>MVP App → Smart Tracking → IoT Pill Dispenser → Health Ecosystem</p>
-</div>
-</div>
-</section>
+        <ul>
+          <li>Add medications with dosage and timing</li>
+          <li>Schedule reminders synced with the IoT device</li>
+          <li>Track taken and missed doses</li>
+          <li>Enable family visibility and notifications</li>
+        </ul>
+      </div>
 
-<section>
-<div class="container">
-<h2 style="text-align:center;margin-bottom:50px">Why PillCareX?</h2>
-<div class="grid">
-<div class="card">⏰ Forgetting doses</div>
-<div class="card">📅 Complex schedules</div>
-<div class="card">👴 Elder care problems</div>
-<div class="card">❌ Missed medicines</div>
-</div>
-</div>
-</section>
+      <div>
+        <p style="color:#94a3b8;">
+          App preview image placeholder  
+          Replace with real mobile UI mockups
+        </p>
+      </div>
+    </div>
+  </section>
 
-<section>
-<div class="container">
-<h2 style="text-align:center;margin-bottom:50px">Future IoT Vision</h2>
-<div class="grid">
-<div class="card">📦 Smart Pill Box</div>
-<div class="card">📡 Auto Detection</div>
-<div class="card">📲 Caregiver Alerts</div>
-</div>
-</div>
-</section>
+  <!-- FEATURES -->
+  <section>
+    <div class="container">
+      <h2>A smarter way to manage medication</h2>
+      <p>
+        PillCareX combines connected hardware, intelligent software,
+        and thoughtful design to create a seamless health management experience.
+      </p>
 
-<section id="waitlist">
-<div class="container">
-<h2 style="text-align:center;margin-bottom:40px">Join the Waitlist</h2>
-<div class="waitlist-box">
-<form onsubmit="submitForm(event)">
-<input required placeholder="Your Name"/>
-<input required type="email" placeholder="Email Address"/>
-<button>Join Now</button>
-<p style="text-align:center;margin-top:16px;color:var(--gray)">No spam. Only updates.</p>
-</form>
-</div>
-</div>
-</section>
+      <div class="features-grid">
+        <div class="feature-card">
+          <h3>Smart Reminders</h3>
+          <p>Device buzzer and mobile notifications ensure doses are never missed.</p>
+        </div>
 
-<footer>
-<p>© 2025 PillCareX. Built with care.</p>
-</footer>
+        <div class="feature-card">
+          <h3>Mixed Pills Pouch</h3>
+          <p>All required pills are dispensed in one pouch for each scheduled time.</p>
+        </div>
 
-<script>
-function scrollToWaitlist(){
-document.getElementById('waitlist').scrollIntoView({behavior:'smooth'});
-}
-function submitForm(e){
-e.preventDefault();
-alert("You're on the waitlist 🚀");
-}
-</script>
+        <div class="feature-card">
+          <h3>Family Notifications</h3>
+          <p>Caregivers receive confirmation when medication is taken.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>AI Medication Information</h3>
+          <p>Understand medications and validate schedules using AI assistance.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FUTURE -->
+  <section class="future">
+    <div class="container">
+      <h2>Future planning: App and IoT integration</h2>
+      <p>
+        PillCareX is designed to evolve into a fully connected healthcare ecosystem.
+      </p>
+
+      <ul>
+        <li>Real-time synchronization between app and device</li>
+        <li>Missed-dose detection with intelligent escalation</li>
+        <li>Automatic refill tracking</li>
+        <li>Doctor and pharmacy integration</li>
+        <li>Advanced AI-based adherence insights</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- WAITLIST -->
+  <section class="waitlist">
+    <div class="container">
+      <h2 style="text-align:center;margin-bottom:30px;">Join the waitlist</h2>
+
+      <div class="waitlist-box">
+        <form
+          action="YOUR_FORM_ACTION_URL"
+          method="POST"
+          target="hidden_iframe"
+          onsubmit="handleSubmit()"
+        >
+          <input
+            type="text"
+            name="ENTRY_NAME_ID"
+            placeholder="Full name"
+            required
+          />
+
+          <input
+            type="email"
+            name="ENTRY_EMAIL_ID"
+            placeholder="Email address"
+            required
+          />
+
+          <button type="submit">Request early access</button>
+        </form>
+
+        <div class="success-message" id="successMessage">
+          You have been successfully added to the waitlist.
+        </div>
+
+        <p class="waitlist-note">
+          No spam. Only important updates.
+        </p>
+
+        <iframe name="hidden_iframe" style="display:none;"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 PillCareX. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function handleSubmit() {
+      setTimeout(() => {
+        document.querySelector('.waitlist-box form').style.display = 'none';
+        document.getElementById('successMessage').style.display = 'block';
+      }, 700);
+    }
+  </script>
 
 </body>
 </html>
